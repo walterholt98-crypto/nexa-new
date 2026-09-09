@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.light body {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* ── Light mode text contrast overrides ── */
+.light .text-slate-100 { color: #0f172a; }
+.light .text-slate-200 { color: #0f172a; }
+.light .text-slate-300 { color: #1e293b; }
+.light .text-slate-400 { color: #334155; }
+.light .text-slate-500 { color: #475569; }
+.light .text-slate-600 { color: #64748b; }
+
+/* Headings and hero titles */
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: #0f172a;
+}
+
+/* Input labels */
+.light label {
+  color: #334155;
+}
+
+/* Placeholder text */
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94a3b8;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(30, 144, 255, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 144, 255, 0.5);
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+  }
+  .neon-border {
+    border: 1px solid rgba(30, 144, 255, 0.3);
+    box-shadow: 0 0 12px rgba(30, 144, 255, 0.15), inset 0 0 12px rgba(30, 144, 255, 0.05);
+  }
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+  }
+  .glass-card {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 144, 255, 0.12);
+  }
+  .light .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(30, 144, 255, 0.3);
+  }
+  .light .bg-surface-700 { background-color: #f1f5f9 !important; }
+  .light .bg-surface-800 { background-color: #e2e8f0 !important; }
+  .light .bg-surface-900 { background-color: #f8fafc !important; }
+  .light .bg-surface-600 { background-color: #e2e8f0 !important; }
+  .light .bg-surface-500 { background-color: #cbd5e1 !important; }
+
+  /* ── Light mode: chart/table/alert card styling ── */
+
+  /* Chart card headers: white background, dark symbol text */
+  .light .glass-card .bg-surface-800\/50 {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid rgba(30, 144, 255, 0.3);
+  }
+  .light .glass-card .bg-surface-800\/30 {
+    background-color: #f8fafc !important;
+    border-top: 1px solid rgba(30, 144, 255, 0.2);
+  }
+
+  /* Table header rows: white background, blue bottom border */
+  .light table thead tr {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid rgba(30, 144, 255, 0.3);
+  }
+
+  /* All borders that use neon-400/10 → strengthen to /30 in light mode */
+  .light .border-neon-400\/10 {
+    border-color: rgba(30, 144, 255, 0.3) !important;
+  }
+
+  /* Coin symbol text in chart headers: dark slate + blue accent stays */
+  .light .glass-card .text-neon-400 {
+    color: #1e90ff;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #1e90ff 0%, #4daaff 50%, #80c3ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .light .gradient-text {
+    background: linear-gradient(135deg, #0060b8 0%, #0078e6 50%, #1e90ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 50%, #121212 100%);
+  }
+  .light .gradient-bg {
+    background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f4ff 100%);
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(30, 144, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 144, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .shimmer-bg {
+    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(30, 144, 255, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(30, 144, 255, 0.6); }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.6s ease-out;
+}
